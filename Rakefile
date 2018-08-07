@@ -7,7 +7,10 @@ namespace :db do
 end
 
 namespace :metrics do
+  desc "store temperture"
   task :store do
     require "./app"
+    c = NatureRemo::Client.new
+    Metric.new(value: c.get_temp)
   end
 end
